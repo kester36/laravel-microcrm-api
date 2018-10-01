@@ -41,7 +41,7 @@ class ProjectTest extends TestCase
             'status' => 'finished',
         ];
 
-        $response = $this->json('PUT', '/api/projects/' . $project->id, $payload)
+        $this->json('PUT', '/api/projects/' . $project->id, $payload)
             ->assertStatus(200)
             ->assertJson([
                 'id' => 1,
@@ -76,7 +76,7 @@ class ProjectTest extends TestCase
         factory(Project::class)->create($project1);
         factory(Project::class)->create($project2);
 
-        $response = $this->json('GET', '/api/projects', [])
+        $this->json('GET', '/api/projects', [])
             ->assertStatus(200)
             ->assertJson([$project1, $project2])
             ->assertJsonStructure([
@@ -93,7 +93,7 @@ class ProjectTest extends TestCase
             'status' => 'running',
         ]);
 
-        $response = $this->json('GET', '/api/projects/' . $project->id, [])
+        $this->json('GET', '/api/projects/' . $project->id, [])
             ->assertStatus(200)
             ->assertJson([
                 'id' => $project->id,

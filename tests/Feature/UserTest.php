@@ -41,7 +41,7 @@ class UserTest extends TestCase
             'email' => 'john2@doe2.fake',
         ];
 
-        $response = $this->json('PUT', '/api/users/' . $user->id, $payload)
+        $this->json('PUT', '/api/users/' . $user->id, $payload)
             ->assertStatus(200)
             ->assertJson([
                 'id' => 1,
@@ -76,7 +76,7 @@ class UserTest extends TestCase
         factory(User::class)->create($user1);
         factory(User::class)->create($user2);
 
-        $response = $this->json('GET', '/api/users', [])
+        $this->json('GET', '/api/users', [])
             ->assertStatus(200)
             ->assertJson([$user1, $user2])
             ->assertJsonStructure([
@@ -93,7 +93,7 @@ class UserTest extends TestCase
             'email' => 'richard@stallman.gnu',
         ]);
 
-        $response = $this->json('GET', '/api/users/' . $user->id, [])
+        $this->json('GET', '/api/users/' . $user->id, [])
             ->assertStatus(200)
             ->assertJson([
                 'id' => $user->id,
