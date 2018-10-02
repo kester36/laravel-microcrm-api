@@ -15,6 +15,7 @@ class UserTest extends TestCase
             'first_name' => 'Linus',
             'last_name' => 'Torvalds',
             'email' => 'linus@torvalds.tux',
+            'password' => 'qwerty12345',
         ];
 
         $this->json('POST', '/api/users', $payload)
