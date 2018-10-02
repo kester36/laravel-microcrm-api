@@ -19,7 +19,7 @@ class ProjectController extends Controller
 
     public function store(Request $request)
     {
-        return Project::create($request->all());
+        return response()->json(Project::create($request->all()), 201);
     }
 
     public function update(Request $request, $id)
@@ -27,7 +27,7 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
         $project->update($request->all());
 
-        return $project;
+        return response()->json($project, 200);
     }
 
     public function delete(Request $request, $id)
@@ -35,6 +35,6 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
         $project->delete();
 
-        return 204;
+        return response()->json(null, 204);
     }
 }
