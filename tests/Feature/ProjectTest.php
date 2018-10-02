@@ -18,7 +18,7 @@ class ProjectTest extends TestCase
         ];
 
         $this->json('POST', '/api/projects', $payload)
-            ->assertStatus(200)
+            ->assertStatus(201)
             ->assertJson([
                 'id' => 1,
                 'name' => 'move table',

@@ -18,7 +18,7 @@ class UserTest extends TestCase
         ];
 
         $this->json('POST', '/api/users', $payload)
-            ->assertStatus(200)
+            ->assertStatus(201)
             ->assertJson([
                 'id' => 1,
                 'first_name' => 'Linus',
